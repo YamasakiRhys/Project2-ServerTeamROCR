@@ -1,6 +1,7 @@
 package com.revature.Project2Rocr.rest;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +34,19 @@ public class AccountCtrl {
 		return accountService.getAllAccounts();
 	}
 
-	@PostMapping("/account")
+	@PostMapping("/create/account")
 	public ResponseEntity<Account> createAccount(@RequestBody Account acc) {
 		System.out.println("AccountCtrl - createAccount");
 		acc = accountService.createAccount(acc);
+		System.out.println(acc);
 		return new ResponseEntity<Account>(acc, HttpStatus.CREATED);
 	}
 	
-	
+	@PostMapping("/login")
+	public Optional<Account> testLogin(@RequestBody Map<String, String> body) {
+		String username = body.get("username");
+		String password = body.get("password");
+		Optional<Account> x = accountService.loginAttempt(username, password);
+		return x;
+	}
 }
