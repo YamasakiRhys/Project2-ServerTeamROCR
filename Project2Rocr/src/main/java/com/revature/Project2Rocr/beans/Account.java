@@ -34,23 +34,28 @@ public class Account {
 	@Column(name="USERNAME")
 	private String username;
 	
-	@Column(name="ADDRESS_ID")
-	private int addressId;
-	
 	@Column(name="PASSWORD")
 	private String password;
 	
 	@Column(name="PHONE_NUMBER")
-	private int phoneNum;
+	private double phoneNum;
 	
+	@Column(name="STREET_ADDRESS")
+	private String street;
 	
+	@Column(name="CITY_ID")
+	private int cityId;
+
+	@Column(name="STATE_ID")
+	private int stateId;
+	
+	@Column(name="COUNTRY_ID")
+	private int countryId;
 	
 	public Account() {}
 
-
-
-	public Account(int userId, int roleId, String email, String fname, String lname, String username, int addressId,
-			String password, int phoneNum) {
+	public Account(int userId, int roleId, String email, String fname, String lname, String username, String password,
+			double phoneNum, String street, int cityId, int stateId, int countryId) {
 		super();
 		this.userId = userId;
 		this.roleId = roleId;
@@ -58,127 +63,120 @@ public class Account {
 		this.fname = fname;
 		this.lname = lname;
 		this.username = username;
-		this.addressId = addressId;
 		this.password = password;
 		this.phoneNum = phoneNum;
+		this.street = street;
+		this.cityId = cityId;
+		this.stateId = stateId;
+		this.countryId = countryId;
 	}
-
-
 
 	public int getUserId() {
 		return userId;
 	}
 
-
-
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
-
 
 	public int getRoleId() {
 		return roleId;
 	}
 
-
-
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
-
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getFname() {
 		return fname;
 	}
 
-
-
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
-
-
 
 	public String getLname() {
 		return lname;
 	}
 
-
-
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
-
-
 
 	public String getUsername() {
 		return username;
 	}
 
-
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-
-
-	public int getAddressId() {
-		return addressId;
-	}
-
-
-
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
-	}
-
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-
-	public int getPhoneNum() {
+	public double getPhoneNum() {
 		return phoneNum;
 	}
-
-
 
 	public void setPhoneNum(int phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 
+	public String getStreet() {
+		return street;
+	}
 
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public int getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(int cityId) {
+		this.cityId = cityId;
+	}
+
+	public int getStateId() {
+		return stateId;
+	}
+
+	public void setStateId(int stateId) {
+		this.stateId = stateId;
+	}
+
+	public int getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(int countryId) {
+		this.countryId = countryId;
+	}
 
 	@Override
 	public String toString() {
 		return "Account [userId=" + userId + ", roleId=" + roleId + ", email=" + email + ", fname=" + fname + ", lname="
-				+ lname + ", username=" + username + ", addressId=" + addressId + ", password=" + password
-				+ ", phoneNum=" + phoneNum + "]";
+				+ lname + ", username=" + username + ", password=" + password + ", phoneNum=" + phoneNum + ", street="
+				+ street + ", cityId=" + cityId + ", stateId=" + stateId + ", countryId=" + countryId + "]";
 	}
+
+
+
+	
 
 	
 	
