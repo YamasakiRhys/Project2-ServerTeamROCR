@@ -2,11 +2,16 @@ package com.revature.Project2Rocr.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="ACCOUNT")
@@ -18,9 +23,6 @@ public class Account {
 //	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID")
 	private int userId;
-	
-	@Column(name="ROLE_ID")
-	private int  roleId;
 	
 	@Column(name="EMAIL")
 	private String email;
@@ -35,6 +37,7 @@ public class Account {
 	private String username;
 	
 	@Column(name="PASSWORD")
+	@JsonIgnore
 	private String password;
 	
 	@Column(name="PHONE_NUMBER")
@@ -43,22 +46,31 @@ public class Account {
 	@Column(name="STREET_ADDRESS")
 	private String street;
 	
-	@Column(name="CITY_ID")
-	private int cityId;
-
-	@Column(name="STATE_ID")
-	private int stateId;
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@JoinColumn(name="ROLE_ID", insertable=false, updatable=false)
+	private Role role;
 	
-	@Column(name="COUNTRY_ID")
-	private int countryId;
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@JoinColumn(name="CITY_ID", insertable=false, updatable=false)
+	private City city;
+
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@JoinColumn(name="STATE_ID", insertable=false, updatable=false)
+	private State state;
+	
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@JoinColumn(name="COUNTRY_ID", insertable=false, updatable=false)
+	private Country country;
 	
 	public Account() {}
 
-	public Account(int userId, int roleId, String email, String fname, String lname, String username, String password,
-			double phoneNum, String street, int cityId, int stateId, int countryId) {
+	
+
+	public Account(int userId, Role role, String email, String fname, String lname, String username, String password,
+			double phoneNum, String street, City city, State state, Country country) {
 		super();
 		this.userId = userId;
-		this.roleId = roleId;
+		this.role = role;
 		this.email = email;
 		this.fname = fname;
 		this.lname = lname;
@@ -66,10 +78,12 @@ public class Account {
 		this.password = password;
 		this.phoneNum = phoneNum;
 		this.street = street;
-		this.cityId = cityId;
-		this.stateId = stateId;
-		this.countryId = countryId;
+		this.city = city;
+		this.state = state;
+		this.country = country;
 	}
+
+
 
 	public int getUserId() {
 		return userId;
@@ -79,13 +93,18 @@ public class Account {
 		this.userId = userId;
 	}
 
-	public int getRoleId() {
-		return roleId;
+
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
+
+
 
 	public String getEmail() {
 		return email;
@@ -131,7 +150,7 @@ public class Account {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(int phoneNum) {
+	public void setPhoneNum(double phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 
@@ -143,40 +162,38 @@ public class Account {
 		this.street = street;
 	}
 
-	public int getCityId() {
-		return cityId;
+	public City getCity() {
+		return city;
 	}
 
-	public void setCityId(int cityId) {
-		this.cityId = cityId;
+	public void setCity(City city) {
+		this.city = city;
 	}
 
-	public int getStateId() {
-		return stateId;
+	public State getState() {
+		return state;
 	}
 
-	public void setStateId(int stateId) {
-		this.stateId = stateId;
+	public void setState(State state) {
+		this.state = state;
 	}
 
-	public int getCountryId() {
-		return countryId;
+	public Country getCountry() {
+		return country;
 	}
 
-	public void setCountryId(int countryId) {
-		this.countryId = countryId;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "Account [userId=" + userId + ", roleId=" + roleId + ", email=" + email + ", fname=" + fname + ", lname="
+		return "Account [userId=" + userId + ", role=" + role + ", email=" + email + ", fname=" + fname + ", lname="
 				+ lname + ", username=" + username + ", password=" + password + ", phoneNum=" + phoneNum + ", street="
-				+ street + ", cityId=" + cityId + ", stateId=" + stateId + ", countryId=" + countryId + "]";
+				+ street + ", city=" + city + ", state=" + state + ", country=" + country + "]";
 	}
-
-
-
-	
 
 	
 	
