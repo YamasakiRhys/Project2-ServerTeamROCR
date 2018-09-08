@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.revature.Project2Rocr.beans.Account;
 import com.revature.Project2Rocr.repository.AccountRepo;
+import com.revature.Project2Rocr.repository.CityRepo;
+import com.revature.Project2Rocr.repository.CountryRepo;
+import com.revature.Project2Rocr.repository.RoleRepo;
+import com.revature.Project2Rocr.repository.StateRepo;
 
 @Service
 public class AccountService {
@@ -15,13 +19,33 @@ public class AccountService {
 	@Autowired
 	AccountRepo accRepo;
 	
+	@Autowired
+	CityRepo cityRepo;
+	
+	@Autowired
+	StateRepo stateRepo;
+	
+	@Autowired
+	CountryRepo countryRepo;
+	
+	@Autowired
+	RoleRepo roleRepo;
+	
 	public Optional<Account> getAccount(int id) {
 		System.out.println(accRepo.findById(id));
+		System.out.println(cityRepo.findAll());
+		System.out.println(stateRepo.findAll());
+		System.out.println(countryRepo.findAll());
+		System.out.println(roleRepo.findAll());
 		return accRepo.findById(id);
 	}
 	
 	public List<Account> getAllAccounts() {
 		System.out.println("service - get all accounts");
+		System.out.println(cityRepo.findAll());
+		System.out.println(stateRepo.findAll());
+		System.out.println(countryRepo.findAll());
+		System.out.println(roleRepo.findAll());
 		return (List<Account>) accRepo.findAll();
 	}
 	
@@ -33,6 +57,10 @@ public class AccountService {
 	
 	public Optional<Account> loginAttempt(String username, String password) {
 		System.out.println("Account Service login attempt -POST");
+		System.out.println(cityRepo.findAll());
+		System.out.println(stateRepo.findAll());
+		System.out.println(countryRepo.findAll());
+		System.out.println(roleRepo.findAll());
 		return accRepo.findByUsernameAndPassword(username, password);
 	}
 }

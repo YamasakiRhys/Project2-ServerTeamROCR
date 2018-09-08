@@ -1,12 +1,19 @@
 package com.revature.Project2Rocr.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="ACCOUNT")
@@ -18,9 +25,6 @@ public class Account {
 //	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID")
 	private int userId;
-	
-	@Column(name="ROLE_ID")
-	private int  roleId;
 	
 	@Column(name="EMAIL")
 	private String email;
@@ -34,33 +38,50 @@ public class Account {
 	@Column(name="USERNAME")
 	private String username;
 	
-	@Column(name="ADDRESS_ID")
-	private int addressId;
-	
 	@Column(name="PASSWORD")
 	private String password;
 	
 	@Column(name="PHONE_NUMBER")
-	private int phoneNum;
+	private double phoneNum;
 	
+	@Column(name="STREET_ADDRESS")
+	private String street;
 	
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="ROLE_ID", insertable=false, updatable=false)
+	private Role role;
+	
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="CITY_ID", insertable=false, updatable=false)
+	private City city;
+
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="STATE_ID", insertable=false, updatable=false)
+	private State state;
+	
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="COUNTRY_ID", insertable=false, updatable=false)
+	private Country country;
 	
 	public Account() {}
 
+	
 
-
-	public Account(int userId, int roleId, String email, String fname, String lname, String username, int addressId,
-			String password, int phoneNum) {
+	public Account(int userId, Role role, String email, String fname, String lname, String username, String password,
+			double phoneNum, String street, City city, State state, Country country) {
 		super();
 		this.userId = userId;
-		this.roleId = roleId;
+		this.role = role;
 		this.email = email;
 		this.fname = fname;
 		this.lname = lname;
 		this.username = username;
-		this.addressId = addressId;
 		this.password = password;
 		this.phoneNum = phoneNum;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.country = country;
 	}
 
 
@@ -69,22 +90,19 @@ public class Account {
 		return userId;
 	}
 
-
-
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
 
-
-	public int getRoleId() {
-		return roleId;
+	public Role getRole() {
+		return role;
 	}
 
 
 
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 
@@ -93,91 +111,90 @@ public class Account {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getFname() {
 		return fname;
 	}
 
-
-
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
-
-
 
 	public String getLname() {
 		return lname;
 	}
 
-
-
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
-
-
 
 	public String getUsername() {
 		return username;
 	}
 
-
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
-
-	public int getAddressId() {
-		return addressId;
-	}
-
-
-
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
-	}
-
-
-
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public String getPassword() {
 		return password;
 	}
-
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-
-	public int getPhoneNum() {
+	public double getPhoneNum() {
 		return phoneNum;
 	}
 
-
-
-	public void setPhoneNum(int phoneNum) {
+	public void setPhoneNum(double phoneNum) {
 		this.phoneNum = phoneNum;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "Account [userId=" + userId + ", roleId=" + roleId + ", email=" + email + ", fname=" + fname + ", lname="
-				+ lname + ", username=" + username + ", addressId=" + addressId + ", password=" + password
-				+ ", phoneNum=" + phoneNum + "]";
+		return "Account [userId=" + userId + ", role=" + role + ", email=" + email + ", fname=" + fname + ", lname="
+				+ lname + ", username=" + username + ", password=" + password + ", phoneNum=" + phoneNum + ", street="
+				+ street + ", city=" + city + ", state=" + state + ", country=" + country + "]";
 	}
 
 	
