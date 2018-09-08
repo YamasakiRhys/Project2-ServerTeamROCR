@@ -1,5 +1,6 @@
 package com.revature.Project2Rocr.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="ACCOUNT")
@@ -37,7 +39,6 @@ public class Account {
 	private String username;
 	
 	@Column(name="PASSWORD")
-	@JsonIgnore
 	private String password;
 	
 	@Column(name="PHONE_NUMBER")
@@ -46,19 +47,19 @@ public class Account {
 	@Column(name="STREET_ADDRESS")
 	private String street;
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="ROLE_ID", insertable=false, updatable=false)
 	private Role role;
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="CITY_ID", insertable=false, updatable=false)
 	private City city;
 
-	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="STATE_ID", insertable=false, updatable=false)
 	private State state;
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="COUNTRY_ID", insertable=false, updatable=false)
 	private Country country;
 	
@@ -138,6 +139,7 @@ public class Account {
 		this.username = username;
 	}
 
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public String getPassword() {
 		return password;
 	}
