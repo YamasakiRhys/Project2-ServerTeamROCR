@@ -31,34 +31,29 @@ public class AccountService {
 	@Autowired
 	RoleRepo roleRepo;
 	
+	// service method to get the account information by id passed
 	public Optional<Account> getAccount(int id) {
 		System.out.println("service - get account by id: " + id);
 		Optional<Account> x = accRepo.findById(id);
-//		System.out.println(x);
 		return x;
 	}
 	
+	// service method used to get all accounts from db
 	public List<Account> getAllAccounts() {
 		System.out.println("service - get all accounts");
-		System.out.println(cityRepo.findAll());
-		System.out.println(stateRepo.findAll());
-		System.out.println(countryRepo.findAll());
-		System.out.println(roleRepo.findAll());
 		return (List<Account>) accRepo.findAll();
 	}
 	
+	// service method used to create accounts
 	public Account createAccount(Account acc) {
 		System.out.println("service - Creating Account");
 		accRepo.save(acc);
 		return acc;
 	}
 	
+	// service method used to pass a username and password to find an account
 	public Optional<Account> loginAttempt(String username, String password) {
 		System.out.println("Account Service login attempt -POST");
-		System.out.println(cityRepo.findAll());
-		System.out.println(stateRepo.findAll());
-		System.out.println(countryRepo.findAll());
-		System.out.println(roleRepo.findAll());
 		return accRepo.findByUsernameAndPassword(username, password);
 	}
 }
