@@ -24,7 +24,7 @@ public class AccountCtrl {
 
 	@GetMapping("/account/{id}")
 	public Optional<Account> getAccount(@PathVariable int id) {
-		System.out.println("AccountCtrl -GET");
+		System.out.println("AccountCtrl getAccount -GET");
 		return accountService.getAccount(id);
 	}
 

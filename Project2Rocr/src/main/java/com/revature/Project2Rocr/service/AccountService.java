@@ -32,12 +32,10 @@ public class AccountService {
 	RoleRepo roleRepo;
 	
 	public Optional<Account> getAccount(int id) {
-		System.out.println(accRepo.findById(id));
-		System.out.println(cityRepo.findAll());
-		System.out.println(stateRepo.findAll());
-		System.out.println(countryRepo.findAll());
-		System.out.println(roleRepo.findAll());
-		return accRepo.findById(id);
+		System.out.println("service - get account by id: " + id);
+		Optional<Account> x = accRepo.findById(id);
+//		System.out.println(x);
+		return x;
 	}
 	
 	public List<Account> getAllAccounts() {
