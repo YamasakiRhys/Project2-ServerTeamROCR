@@ -81,7 +81,7 @@ public class Account {
 	public Account() {}
 
 	public Account(int userId, String email, String fname, String lname, String username, String password,
-			double phoneNum, String streetAddress, int roleId, int cityId, int stateId, int countryId, Role role, City city,
+			double phoneNumber, String streetAddress, int roleId, int cityId, int stateId, int countryId, Role role, City city,
 			State state, Country country) {
 		super();
 		this.userId = userId;
@@ -90,7 +90,7 @@ public class Account {
 		this.lname = lname;
 		this.username = username;
 		this.password = password;
-		this.phoneNumber = phoneNum;
+		this.phoneNumber = phoneNumber;
 		this.streetAddress = streetAddress;
 		this.roleId = roleId;
 		this.cityId = cityId;
@@ -234,7 +234,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [userId=" + userId + ", email=" + email + ", fname=" + fname + ", lname=" + lname
-				+ ", username=" + username + ", password=" + password + ", phoneNum=" + phoneNumber + ", street=" + streetAddress
+				+ ", username=" + username + ", password=" + password + ", phoneNumber=" + phoneNumber + ", street=" + streetAddress
 				+ ", roleId=" + roleId + ", cityId=" + cityId + ", stateId=" + stateId + ", countryId=" + countryId
 				+ ", role=" + role + ", city=" + city + ", state=" + state + ", country=" + country + "]";
 	}
