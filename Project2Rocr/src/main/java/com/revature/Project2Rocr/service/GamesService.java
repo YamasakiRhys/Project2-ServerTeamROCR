@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.Project2Rocr.beans.Games;
 import com.revature.Project2Rocr.beans.Genre;
 import com.revature.Project2Rocr.repository.GamesRepo;
 import com.revature.Project2Rocr.repository.GenreRepo;
@@ -20,5 +21,10 @@ public class GamesService {
 	
 	public List<Genre> getAllGenres() {
 		return (List<Genre>) genreRepo.findAll();
+	}
+	
+	public Games addGame(Games game) {
+		gamesRepo.save(game);
+		return game;
 	}
 }
