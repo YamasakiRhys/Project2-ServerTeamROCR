@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -22,7 +22,6 @@ public class Account {
 	@Id
 	@SequenceGenerator(name="USER_ID_SEQ", sequenceName="USER_ID_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_SEQ")
-//	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID")
 	private int userId;
 	
@@ -42,49 +41,74 @@ public class Account {
 	private String password;
 	
 	@Column(name="PHONE_NUMBER")
-	private double phoneNum;
+	private double phoneNumber;
 	
 	@Column(name="STREET_ADDRESS")
-	private String street;
+	private String streetAddress;
 	
+	@Column(name="ROLE_ID")
+	private int roleId;
+	
+	@Column(name="CITY_ID")
+	private int cityId;
+	
+	@Column(name="STATE_ID")
+	private int stateId;
+	
+	@Column(name="COUNTRY_ID")
+	private int countryId;
+	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="ROLE_ID", insertable=false, updatable=false)
 	private Role role;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="CITY_ID", insertable=false, updatable=false)
 	private City city;
 
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="STATE_ID", insertable=false, updatable=false)
 	private State state;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="COUNTRY_ID", insertable=false, updatable=false)
 	private Country country;
 	
 	public Account() {}
 
-	
-
-	public Account(int userId, Role role, String email, String fname, String lname, String username, String password,
-			double phoneNum, String street, City city, State state, Country country) {
+	public Account(int userId, String email, String fname, String lname, String username, String password,
+			double phoneNum, String streetAddress, int roleId, int cityId, int stateId, int countryId, Role role, City city,
+			State state, Country country) {
 		super();
 		this.userId = userId;
-		this.role = role;
 		this.email = email;
 		this.fname = fname;
 		this.lname = lname;
 		this.username = username;
 		this.password = password;
-		this.phoneNum = phoneNum;
-		this.street = street;
-		this.city = city;
-		this.state = state;
-		this.country = country;
+		this.phoneNumber = phoneNum;
+		this.streetAddress = streetAddress;
+		this.roleId = roleId;
+		this.cityId = cityId;
+		this.stateId = stateId;
+		this.countryId = countryId;
 	}
 
+	public double getPhoneNumber() {
+		return phoneNumber;
+	}
 
+	public void setPhoneNumber(double phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
+	}
 
 	public int getUserId() {
 		return userId;
@@ -94,18 +118,13 @@ public class Account {
 		this.userId = userId;
 	}
 
-
 	public Role getRole() {
 		return role;
 	}
 
-
-
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
-
 
 	public String getEmail() {
 		return email;
@@ -148,20 +167,44 @@ public class Account {
 		this.password = password;
 	}
 
-	public double getPhoneNum() {
-		return phoneNum;
+	public String getStreetAddress() {
+		return streetAddress;
 	}
 
-	public void setPhoneNum(double phoneNum) {
-		this.phoneNum = phoneNum;
+	public void setStreet(String streetAddress) {
+		this.streetAddress = streetAddress;
 	}
 
-	public String getStreet() {
-		return street;
+	public int getRoleId() {
+		return roleId;
 	}
 
-	public void setStreet(String street) {
-		this.street = street;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public int getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(int cityId) {
+		this.cityId = cityId;
+	}
+
+	public int getStateId() {
+		return stateId;
+	}
+
+	public void setStateId(int stateId) {
+		this.stateId = stateId;
+	}
+
+	public int getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(int countryId) {
+		this.countryId = countryId;
 	}
 
 	public City getCity() {
@@ -188,16 +231,12 @@ public class Account {
 		this.country = country;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Account [userId=" + userId + ", role=" + role + ", email=" + email + ", fname=" + fname + ", lname="
-				+ lname + ", username=" + username + ", password=" + password + ", phoneNum=" + phoneNum + ", street="
-				+ street + ", city=" + city + ", state=" + state + ", country=" + country + "]";
+		return "Account [userId=" + userId + ", email=" + email + ", fname=" + fname + ", lname=" + lname
+				+ ", username=" + username + ", password=" + password + ", phoneNum=" + phoneNumber + ", street=" + streetAddress
+				+ ", roleId=" + roleId + ", cityId=" + cityId + ", stateId=" + stateId + ", countryId=" + countryId
+				+ ", role=" + role + ", city=" + city + ", state=" + state + ", country=" + country + "]";
 	}
-
-	
-	
 	
 }

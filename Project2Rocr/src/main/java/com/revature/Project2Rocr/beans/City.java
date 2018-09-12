@@ -25,7 +25,6 @@ public class City implements Serializable{
 	@OneToMany(mappedBy = "city", fetch=FetchType.LAZY)
 	private Set<Account> acc = new HashSet<Account>();
 	
-	
 	public City() {}
 
 	public City(int cityId, String cityName) {
