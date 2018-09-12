@@ -24,20 +24,31 @@ public class AccountCtrl {
 
 	// get request to get account by id
 	@GetMapping("/account/{id}")
-	public Optional<Account> getAccount(@PathVariable int id) {
+	public ResponseEntity<Optional<Account>> getAccount(@PathVariable int id) {
 		System.out.println("AccountCtrl getAccount -GET");
-		return accountService.getAccount(id);
+		if (accountService.getAccount(id).equals(null)) {
+			return new ResponseEntity<Optional<Account>>(HttpStatus.NOT_FOUND);
+		} else {
+		return new ResponseEntity<Optional<Account>>(accountService.getAccount(id), HttpStatus.OK);
+		}
 	}
 
-	// get request to get all accounts
+	/**
+	 *  Get request to get all accounts
+	 * @return List of accounts
+	 */
 	@GetMapping("/account")
-	public List<Account> getAllAccounts() {
+	public ResponseEntity<List<Account>> getAllAccounts() {
 		System.out.println("AccountCtrl getAllAccounts -GET");
-		return accountService.getAllAccounts();
+		if (accountService.getAllAccounts().size() == 0) {
+			return new ResponseEntity<List<Account>>(HttpStatus.NO_CONTENT);
+		} else {
+		return new ResponseEntity<List<Account>>(accountService.getAllAccounts(), HttpStatus.OK);
+		}
 	}
 
 	// end point to send a post request to create an account
-	@PostMapping("/create/account")
+	@PostMapping("/account")
 	public ResponseEntity<Account> createAccount(@RequestBody Account acc) {
 		System.out.println("AccountCtrl - createAccount");
 		// the variable acc takes the newly created user from the service
@@ -50,12 +61,15 @@ public class AccountCtrl {
 	
 	// post method for logging in a user
 	@PostMapping("/login")
-	public Optional<Account> testLogin(@RequestBody Map<String, String> body) {
+	public ResponseEntity<Optional<Account>> testLogin(@RequestBody Map<String, String> body) {
 		// looks at the json object and looks for appropriate value of the specified key
 		String username = body.get("username");
 		String password = body.get("password");
 		// checks the db for a user based on username and password
-		Optional<Account> x = accountService.loginAttempt(username, password);
-		return x;
+		if (accountService.loginAttempt(username, password) == null) {
+			return new ResponseEntity<Optional<Account>> (HttpStatus.NOT_FOUND);
+		} else {
+		return new ResponseEntity<Optional<Account>>(HttpStatus.ACCEPTED);
+		}
 	}
 }
