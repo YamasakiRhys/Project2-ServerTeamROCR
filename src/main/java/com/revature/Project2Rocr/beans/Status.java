@@ -22,8 +22,8 @@ public class Status implements Serializable{
 	@Column(name="STATUS_NAME")
 	private String statusName;
 	
-//	@OneToMany(mappedBy="status", fetch=FetchType.LAZY)
-//	private Set<Requests> req = new HashSet<Requests>();
+	@OneToMany(mappedBy="status", fetch=FetchType.LAZY)
+	private Set<Requests> requests = new HashSet<Requests>();
 	
 	public Status() {}
 
@@ -31,7 +31,6 @@ public class Status implements Serializable{
 		super();
 		this.statusId = statusId;
 		this.statusName = statusName;
-//		this.req = requests;
 	}
 
 	public int getStatusId() {
@@ -49,14 +48,6 @@ public class Status implements Serializable{
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
 	}
-
-//	public Set<Requests> getRequests() {
-//		return req;
-//	}
-//
-//	public void setRequests(Set<Requests> requests) {
-//		this.req = requests;
-//	}
 
 	@Override
 	public String toString() {

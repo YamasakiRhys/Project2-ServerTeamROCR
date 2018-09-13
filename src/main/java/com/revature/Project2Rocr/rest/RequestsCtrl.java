@@ -16,7 +16,10 @@ public class RequestsCtrl {
 
 	@Autowired
 	private RequestsService requestsService;
-	
+	/**
+	 * Sends a get request and receive a list of all requests
+	 * @return An array list of requests and an http status is returned
+	 */
 	@GetMapping("/requests")
 	public ResponseEntity<List<Requests>> getAllRequests() {
 		return new ResponseEntity<List<Requests>>(requestsService.getAllRequests(), HttpStatus.OK);

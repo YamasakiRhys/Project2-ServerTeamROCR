@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.Project2Rocr.beans.Requests;
+import com.revature.Project2Rocr.repository.AccountRepo;
 import com.revature.Project2Rocr.repository.GamesRepo;
 import com.revature.Project2Rocr.repository.GenreRepo;
 import com.revature.Project2Rocr.repository.RequestsRepo;
@@ -16,6 +17,9 @@ public class RequestsService {
 
 	@Autowired
 	private RequestsRepo requestsRepo;
+	
+	@Autowired
+	private AccountRepo accRepo;
 	
 	@Autowired
 	private GamesRepo gamesRepo;

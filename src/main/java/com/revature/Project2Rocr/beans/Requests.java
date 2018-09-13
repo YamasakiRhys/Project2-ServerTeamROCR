@@ -22,18 +22,18 @@ public class Requests {
 	@Column(name="USER_ID")
 	private int userId;
 	
-//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
-//	@JoinColumn(name="USER_ID", insertable=false, updatable=false)
-//	private Account account;
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="USER_ID", insertable=false, updatable=false)
+	private Account account;
 	
 	@Column(name="GAME_ID")
 	private int gameId;
 	
-//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
-//	@JoinColumn(name="GAME_ID", insertable=false, updatable=false)
-//	private Games games;
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="GAME_ID", insertable=false, updatable=false)
+	private Games games;
 	
 	@Column(name="DESCRIPTION")
 	private String description;
@@ -41,10 +41,10 @@ public class Requests {
 	@Column(name="STATUS_ID")
 	private int statusId;
 	
-//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
-//	@JoinColumn(name="STATUS_ID", insertable=false, updatable=false)
-//	private Status status;
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="STATUS_ID", insertable=false, updatable=false)
+	private Status status;
 
 	public Requests() {}
 
@@ -53,12 +53,9 @@ public class Requests {
 		super();
 		this.requestId = requestId;
 		this.userId = userId;
-//		this.account = account;
 		this.gameId = gameId;
-//		this.games = games;
 		this.description = description;
 		this.statusId = statusId;
-//		this.status = status;
 	}
 	
 	public int getRequestId() {
@@ -101,29 +98,29 @@ public class Requests {
 		this.statusId = statusId;
 	}
 
-//	public Account getAccount() {
-//		return account;
-//	}
-//
-//	public void setAccount(Account account) {
-//		this.account = account;
-//	}
-//
-//	public Games getGames() {
-//		return games;
-//	}
-//
-//	public void setGames(Games games) {
-//		this.games = games;
-//	}
-//
-//	public Status getStatus() {
-//		return status;
-//	}
-//
-//	public void setStatus(Status status) {
-//		this.status = status;
-//	}
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public Games getGames() {
+		return games;
+	}
+
+	public void setGames(Games games) {
+		this.games = games;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {

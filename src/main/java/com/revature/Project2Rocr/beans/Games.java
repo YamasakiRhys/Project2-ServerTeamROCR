@@ -39,8 +39,8 @@ public class Games {
 	@JoinColumn(name="GENRE_ID", updatable=false, insertable=false)
 	private Genre genre;
 	
-//	@OneToMany(mappedBy="games", fetch=FetchType.LAZY)
-//	private Set<Requests> requests = new HashSet<Requests>();
+	@OneToMany(mappedBy="games", fetch=FetchType.LAZY)
+	private Set<Requests> requests = new HashSet<Requests>();
 	
 	public Games() {}
 
