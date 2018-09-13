@@ -32,6 +32,12 @@ public class RequestsService {
 	
 	public List<Requests> getAllRequests(){
 		return (List<Requests>) requestsRepo.findAll();
-		
 	}
+	
+	public Requests createRequest(Requests req) {
+		System.out.println("req service - get all accounts");
+		requestsRepo.save(req);
+		return req;
+	}
+	
 }
