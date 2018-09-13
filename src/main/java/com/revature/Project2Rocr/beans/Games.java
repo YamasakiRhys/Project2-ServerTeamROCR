@@ -1,5 +1,8 @@
 package com.revature.Project2Rocr.beans;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -34,6 +38,9 @@ public class Games {
 	@ManyToOne(fetch=FetchType.EAGER, optional=false, cascade=CascadeType.ALL)
 	@JoinColumn(name="GENRE_ID", updatable=false, insertable=false)
 	private Genre genre;
+	
+	@OneToMany(mappedBy="games", fetch=FetchType.LAZY)
+	private Set<Requests> requests = new HashSet<Requests>();
 	
 	public Games() {}
 
