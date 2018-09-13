@@ -127,8 +127,9 @@ public class Requests {
 
 	@Override
 	public String toString() {
-		return "Requests [requestId=" + requestId + ", userId=" + userId + ", gameId=" + gameId + ", description="
-				+ description + ", statusId=" + statusId + "]";
+		return "Requests [requestId=" + requestId + ", userId=" + userId + ", account=" + account + ", gameId=" + gameId
+				+ ", games=" + games + ", description=" + description + ", statusId=" + statusId + ", status=" + status
+				+ "]";
 	}
 	
 }

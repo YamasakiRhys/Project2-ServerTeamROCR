@@ -18,7 +18,7 @@ public class RequestsCtrl {
 	private RequestsService requestsService;
 	
 	@GetMapping("/requests")
-	public ResponseEntity<List<Requests>> getAllRequests(){
+	public ResponseEntity<List<Requests>> getAllRequests() {
 		return new ResponseEntity<List<Requests>>(requestsService.getAllRequests(), HttpStatus.OK);
 	}
 	
