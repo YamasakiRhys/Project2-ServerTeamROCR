@@ -82,8 +82,8 @@ public class Account {
 	@JoinColumn(name="COUNTRY_ID", insertable=false, updatable=false)
 	private Country country;
 	
-	@OneToMany(mappedBy="account", fetch=FetchType.LAZY)
-	private Set<Requests> requests = new HashSet<Requests>();
+//	@OneToMany(mappedBy="account", fetch=FetchType.LAZY)
+//	private Set<Requests> requests = new HashSet<Requests>();
 	
 	public Account() {}
 
