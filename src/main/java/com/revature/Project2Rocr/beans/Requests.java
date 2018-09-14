@@ -1,5 +1,8 @@
 package com.revature.Project2Rocr.beans;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -51,6 +55,12 @@ public class Requests {
 	@JoinColumn(name="STATUS_ID", insertable=false, updatable=false)
 	private Status status;
 
+	@OneToMany(mappedBy="requestOffer", fetch=FetchType.LAZY)
+	private Set<Trade> trade = new HashSet<Trade>();
+	
+	@OneToMany(mappedBy="givenOffer", fetch=FetchType.LAZY)
+	private Set<Trade> trd = new HashSet<Trade>();
+	
 	public Requests() {}
 
 	public Requests(int requestId, int userId, Account account, int gameId, Games games, String description,
