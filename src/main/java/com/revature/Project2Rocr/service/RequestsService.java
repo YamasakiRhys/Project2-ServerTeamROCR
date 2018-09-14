@@ -1,6 +1,7 @@
 package com.revature.Project2Rocr.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,15 @@ public class RequestsService {
 		return req;
 		}
 	}
+	
+	public Optional<Requests> findRequestById(int id) {
+		Optional<Requests> req = requestsRepo.findById(id);
+		return req;
+	}
+//	
+//	public Requests updateRequestStatusPending(int id) {
+//		System.out.println("req service - update status to pending");
+//		this.findRequestById(id).get().setRequestId(2);
+//	}
 	
 }
