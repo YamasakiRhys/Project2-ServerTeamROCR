@@ -31,6 +31,10 @@ public class RequestsCtrl {
 	public ResponseEntity<Requests> createRequest(@RequestBody Requests req) {
 		System.out.println("RequestsCtrl - createRequest");
 		req = requestsService.createRequest(req);
+		if (req == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		} else {
 		return new ResponseEntity<Requests>(req, HttpStatus.CREATED);
+		}
 	}
 }
