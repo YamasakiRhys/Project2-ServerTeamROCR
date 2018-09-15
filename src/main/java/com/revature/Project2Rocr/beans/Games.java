@@ -32,6 +32,9 @@ public class Games {
 	@Column(name="TITLE")
 	private String title;
 	
+	@Column(name="IMAGE")
+	private String image;
+	
 	@Column(name="GENRE_ID")
 	private int genreId;
 	
@@ -44,13 +47,16 @@ public class Games {
 	
 	public Games() {}
 
-	public Games(int gameId, String plot, String title, int genreId, Genre genre) {
+	public Games(int gameId, String plot, String title, String image, int genreId, Genre genre,
+			Set<Requests> requests) {
 		super();
 		this.gameId = gameId;
 		this.plot = plot;
 		this.title = title;
+		this.image = image;
 		this.genreId = genreId;
 		this.genre = genre;
+		this.requests = requests;
 	}
 
 	public int getGameId() {
@@ -77,6 +83,14 @@ public class Games {
 		this.title = title;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public int getGenreId() {
 		return genreId;
 	}
@@ -95,8 +109,8 @@ public class Games {
 
 	@Override
 	public String toString() {
-		return "Games [gameId=" + gameId + ", plot=" + plot + ", title=" + title + ", genreId=" + genreId + ", genre="
-				+ genre + "]";
+		return "Games [gameId=" + gameId + ", plot=" + plot + ", title=" + title + ", image=" + image + ", genreId="
+				+ genreId + "]";
 	}
 
 }
