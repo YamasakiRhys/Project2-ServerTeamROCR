@@ -96,7 +96,6 @@ public class Account {
 		this.fname = fname;
 		this.lname = lname;
 		this.username = username;
-//		this.password = password; String password,
 		this.phoneNumber = phoneNumber;
 		this.streetAddress = streetAddress;
 		this.roleId = roleId;

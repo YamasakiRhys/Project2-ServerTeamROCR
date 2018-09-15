@@ -27,7 +27,7 @@ public class TradeCtrl {
 	
 	/**
 	 * Gets all trades from DB
-	 * @return
+	 * @return A list of trades an HttpStatus of 200
 	 */
 	@GetMapping("/trade")
 	public ResponseEntity<List<Trade>> getAllTrade() {
@@ -37,6 +37,7 @@ public class TradeCtrl {
 	
 	/**
 	 * Sends a post request and creates a new trade
+	 * @return a trade json object and an HttpStatus of Created
 	 */
 	
 	@PostMapping("/trade")
