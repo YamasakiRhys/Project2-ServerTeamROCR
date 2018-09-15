@@ -87,7 +87,7 @@ public class Account {
 	
 	public Account() {}
 
-	public Account(int userId, String email, String fname, String lname, String username, String password,
+	public Account(int userId, String email, String fname, String lname, String username, 
 			double phoneNumber, String streetAddress, int roleId, int cityId, int stateId, int countryId, Role role, City city,
 			State state, Country country) {
 		super();
@@ -96,7 +96,7 @@ public class Account {
 		this.fname = fname;
 		this.lname = lname;
 		this.username = username;
-		this.password = password;
+//		this.password = password; String password,
 		this.phoneNumber = phoneNumber;
 		this.streetAddress = streetAddress;
 		this.roleId = roleId;
