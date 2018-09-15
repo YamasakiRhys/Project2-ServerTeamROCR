@@ -19,6 +19,11 @@ public class GamesService {
 	@Autowired
 	private GenreRepo genreRepo;
 	
+	
+	public List<Games> getAllGames() {
+		return (List<Games>) gamesRepo.findAll();
+	}
+	
 	/**
 	 * Gets a list of all available game genres in the db
 	 * @return a list of game genres

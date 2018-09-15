@@ -70,4 +70,8 @@ public class RequestsCtrl {
 		requests = requestsService.updateRequestStatusPending(requests);
 		return new ResponseEntity<>(requests, HttpStatus.OK);
 	}
+	
+	
+//	@PutMapping("/requests/open/{id}")
+//	public ResponseEntity<Requests> updateStatusOpen(@RequestBody Requests requests, @Path)
 }

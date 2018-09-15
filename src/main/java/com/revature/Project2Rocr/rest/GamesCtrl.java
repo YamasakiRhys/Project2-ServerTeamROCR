@@ -22,6 +22,12 @@ public class GamesCtrl {
 	@Autowired
 	private GamesService gamesService;
 	
+	
+	@GetMapping("/games")
+	public ResponseEntity<List<Games>> getAllGames() {
+		return new ResponseEntity<List<Games>>(gamesService.getAllGames(), HttpStatus.OK);
+	}
+	
 	/**
 	 *  This method sends a get request to endpoint to receive a list of genres
 	 * @return if null is returned from game service method the return httpStatus of not found
