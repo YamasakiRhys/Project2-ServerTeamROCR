@@ -7,9 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,12 +48,12 @@ public class RequestsCtrl {
 		}
 	}
 
-	@PatchMapping("/requests/{id}")
+	@PutMapping("/requests/pending/{id}")
 	public ResponseEntity<Requests> updateStatusPending(@RequestBody Requests requests, @PathVariable int id) {
 		System.out.println("RequestsCtrl - update status to pending");
 		requests.setRequestId(id);
 		System.out.println(requests);
-		requestsRepo.save(requests);
-		return new ResponseEntity<>(HttpStatus.OK);
+		requests = requestsService.updateRequestStatusPending(requests);
+		return new ResponseEntity<>(requests, HttpStatus.OK);
 	}
 }

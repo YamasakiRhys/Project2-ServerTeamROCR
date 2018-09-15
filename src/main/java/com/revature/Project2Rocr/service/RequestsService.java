@@ -44,10 +44,11 @@ public class RequestsService {
 		Optional<Requests> req = requestsRepo.findById(id);
 		return req;
 	}
-//	
-//	public Requests updateRequestStatusPending(int id) {
-//		System.out.println("req service - update status to pending");
-//		this.findRequestById(id).get().setRequestId(2);
-//	}
+	
+	public Requests updateRequestStatusPending(Requests requests) {
+		System.out.println("req service - update status to pending");
+		requestsRepo.save(requests);
+		return requests;
+	}
 	
 }
