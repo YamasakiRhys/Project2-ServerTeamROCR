@@ -71,7 +71,7 @@ public class AccountCtrl {
 		if (accountService.loginAttempt(username, password) == null) {
 			return new ResponseEntity<Optional<Account>> (HttpStatus.NOT_FOUND);
 		} else {
-		return new ResponseEntity<Optional<Account>>(HttpStatus.ACCEPTED);
+		return new ResponseEntity<Optional<Account>>(accountService.loginAttempt(username, password), HttpStatus.ACCEPTED);
 		}
 	}
 }
