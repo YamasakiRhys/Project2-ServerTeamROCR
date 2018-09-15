@@ -37,6 +37,12 @@ public class RequestsCtrl {
 		return new ResponseEntity<List<Requests>>(requestsService.getAllRequests(), HttpStatus.OK);
 	}
 
+	/**
+	 * 
+	 * @param req - takes a json object 
+	 * @return if requestService.createRequest returns null, an http status response is sent back
+	 * 		if a response is returned with an object, then return the object and send http status 201
+	 */
 	@PostMapping("/requests")
 	public ResponseEntity<Requests> createRequest(@RequestBody Requests req) {
 		System.out.println("RequestsCtrl - createRequest");
@@ -47,7 +53,15 @@ public class RequestsCtrl {
 			return new ResponseEntity<Requests>(req, HttpStatus.CREATED);
 		}
 	}
+	
 
+	/**
+	 * 	This method sends an put request to the database to change the requests status
+	 * 
+	 * @param requests - receives json object from client
+	 * @param id - the id of the specific request that needs to be updated
+	 * @return - a request object is returned and http status of 200
+	 */
 	@PutMapping("/requests/pending/{id}")
 	public ResponseEntity<Requests> updateStatusPending(@RequestBody Requests requests, @PathVariable int id) {
 		System.out.println("RequestsCtrl - update status to pending");
