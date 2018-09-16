@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.Project2Rocr.beans.Account;
+import com.revature.Project2Rocr.beans.City;
+import com.revature.Project2Rocr.beans.Country;
+import com.revature.Project2Rocr.beans.State;
 import com.revature.Project2Rocr.service.AccountService;
 
 @CrossOrigin
@@ -72,6 +75,45 @@ public class AccountCtrl {
 			return new ResponseEntity<Optional<Account>> (HttpStatus.NOT_FOUND);
 		} else {
 		return new ResponseEntity<Optional<Account>>(accountService.loginAttempt(username, password), HttpStatus.ACCEPTED);
+		}
+	}
+	
+	/**
+	 * This method gets a list of cities
+	 * @return returns http status of not found or a list and http status of okay
+	 */
+	@GetMapping("/city")
+	public ResponseEntity<List<City>> getAllCities() {
+		if (accountService.getCities() == null) {
+			return new ResponseEntity<List<City>>(HttpStatus.NOT_FOUND);
+		} else {
+		return new ResponseEntity<List<City>>(accountService.getCities(), HttpStatus.OK); 
+		}
+	}
+	
+	/**
+	 * This method gets a list of states
+	 * @return returns http status of not found or a list and http status of okay
+	 */
+	@GetMapping("/state")
+	public ResponseEntity<List<State>> getAllStates() {
+		if (accountService.getStates() == null) {
+			return new ResponseEntity<List<State>>(HttpStatus.NOT_FOUND);
+		} else {
+		return new ResponseEntity<List<State>>(accountService.getStates(), HttpStatus.OK); 
+		}
+	}
+	
+	/**
+	 * This method gets a list of countries
+	 * @return returns http status of not found or a list and http status of okay
+	 */
+	@GetMapping("/country")
+	public ResponseEntity<List<Country>> getAllCountries() {
+		if (accountService.getAllCountries() == null) {
+			return new ResponseEntity<List<Country>>(HttpStatus.NOT_FOUND);
+		} else {
+		return new ResponseEntity<List<Country>>(accountService.getAllCountries(), HttpStatus.OK); 
 		}
 	}
 }
