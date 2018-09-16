@@ -55,17 +55,7 @@ public class RequestsService {
 	 * @param receives a request object from the controller
 	 * @return returns the result of the saved object
 	 */
-	public Requests updateRequestStatusPending(Requests requests) {
-		requestsRepo.save(requests);
-		return requests;
-	}
-	
-	/**
-	 * This method changes the status of a request to open
-	 * @param receives a request object from the controller
-	 * @return returns the result of the saved object
-	 */
-	public Requests updateRequestStatusOpen(Requests requests) {
+	public Requests updateRequestStatus(Requests requests) {
 		requestsRepo.save(requests);
 		return requests;
 	}
