@@ -1,5 +1,7 @@
 package com.revature.Project2Rocr.beans;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="TRADE")
-public class Trade {
+public class Trade implements Serializable{
 
 	@Id
 	@SequenceGenerator(name="GAME_ID_SEQ", sequenceName="GAME_ID_SEQ", allocationSize=1)
@@ -31,14 +35,17 @@ public class Trade {
 	@Column(name="STATUS_ID")
 	private int statusId;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.EAGER, optional=false, cascade=CascadeType.ALL)
 	@JoinColumn(name="REQUESTED_OFFER_ID", updatable=false, insertable=false)
 	private Requests requestOffer;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.EAGER, optional=false, cascade=CascadeType.ALL)
 	@JoinColumn(name="GIVEN_OFFER_ID", updatable=false, insertable=false)
 	private Requests givenOffer;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.EAGER, optional=false, cascade=CascadeType.ALL)
 	@JoinColumn(name="STATUS_ID", updatable=false, insertable=false)
 	private Status status;
