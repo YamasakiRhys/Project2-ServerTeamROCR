@@ -25,6 +25,9 @@ public class Status implements Serializable{
 	@OneToMany(mappedBy="status", fetch=FetchType.LAZY)
 	private Set<Requests> requests = new HashSet<Requests>();
 	
+	@OneToMany(mappedBy="status", fetch=FetchType.LAZY)
+	private Set<Trade> trade = new HashSet<Trade>();
+	
 	public Status() {}
 
 	public Status(int statusId, String statusName, Set<Requests> requests) {
