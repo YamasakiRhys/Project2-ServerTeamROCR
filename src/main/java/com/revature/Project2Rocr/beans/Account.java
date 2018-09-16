@@ -62,6 +62,14 @@ public class Account {
 	@Column(name="COUNTRY_ID")
 	private int countryId;
 	
+	@Column(name="ACCOUNT_STATUS_ID")
+	private int accountStatusId;
+	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="ROLE_ID", insertable=false, updatable=false)
+	private AccountStatus accountStatus;
+	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="ROLE_ID", insertable=false, updatable=false)
