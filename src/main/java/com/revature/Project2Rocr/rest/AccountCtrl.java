@@ -81,10 +81,10 @@ public class AccountCtrl {
 	
 	@GetMapping("/city")
 	public ResponseEntity<List<City>> getAllCities() {
-		if (accountService.getCitites() == null) {
+		if (accountService.getCities() == null) {
 			return new ResponseEntity<List<City>>(HttpStatus.NOT_FOUND);
 		} else {
-		return new ResponseEntity<List<City>>(accountService.getCitites(), HttpStatus.OK); 
+		return new ResponseEntity<List<City>>(accountService.getCities(), HttpStatus.OK); 
 		}
 	}
 	
@@ -93,16 +93,16 @@ public class AccountCtrl {
 		if (accountService.getStates() == null) {
 			return new ResponseEntity<List<State>>(HttpStatus.NOT_FOUND);
 		} else {
-		return new ResponseEntity<List<State>>(accountService.getCitites(), HttpStatus.OK); 
+		return new ResponseEntity<List<State>>(accountService.getStates(), HttpStatus.OK); 
 		}
 	}
 	
 	@GetMapping("/country")
 	public ResponseEntity<List<Country>> getAllCountries() {
-		if (accountService.getCountries() == null) {
+		if (accountService.getAllCountries() == null) {
 			return new ResponseEntity<List<Country>>(HttpStatus.NOT_FOUND);
 		} else {
-		return new ResponseEntity<List<Country>>(accountService.getCountries(), HttpStatus.OK); 
+		return new ResponseEntity<List<Country>>(accountService.getAllCountries(), HttpStatus.OK); 
 		}
 	}
 }
