@@ -78,7 +78,10 @@ public class AccountCtrl {
 		}
 	}
 	
-	
+	/**
+	 * This method gets a list of cities
+	 * @return returns http status of not found or a list and http status of okay
+	 */
 	@GetMapping("/city")
 	public ResponseEntity<List<City>> getAllCities() {
 		if (accountService.getCities() == null) {
@@ -88,6 +91,10 @@ public class AccountCtrl {
 		}
 	}
 	
+	/**
+	 * This method gets a list of states
+	 * @return returns http status of not found or a list and http status of okay
+	 */
 	@GetMapping("/state")
 	public ResponseEntity<List<State>> getAllStates() {
 		if (accountService.getStates() == null) {
@@ -97,6 +104,10 @@ public class AccountCtrl {
 		}
 	}
 	
+	/**
+	 * This method gets a list of countries
+	 * @return returns http status of not found or a list and http status of okay
+	 */
 	@GetMapping("/country")
 	public ResponseEntity<List<Country>> getAllCountries() {
 		if (accountService.getAllCountries() == null) {
