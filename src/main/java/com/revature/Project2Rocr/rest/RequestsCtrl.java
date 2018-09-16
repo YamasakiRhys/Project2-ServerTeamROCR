@@ -73,7 +73,12 @@ public class RequestsCtrl {
 		return new ResponseEntity<>(requests, HttpStatus.OK);
 	}
 	
-	
+	/**
+	 * 	This method updates the status of a request
+	 * @param takes in a json object as a request
+	 * @param the path variable is used to find the id of the 
+	 * @return a request object is returned and http status of 200
+	 */
 	@PutMapping("/requests/open/{id}")
 	public ResponseEntity<Requests> updateStatusOpen(@RequestBody Requests requests, @PathVariable int id) {
 		System.out.println("RequestsCtrl - update status to pending");
