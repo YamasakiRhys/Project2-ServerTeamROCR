@@ -69,7 +69,7 @@ public class RequestsCtrl {
 		requests.setRequestId(id);
 		requests.setStatusId(2);
 		System.out.println(requests);
-		requests = requestsService.updateRequestStatusPending(requests);
+		requests = requestsService.updateRequestStatus(requests);
 		return new ResponseEntity<>(requests, HttpStatus.OK);
 	}
 	
@@ -85,7 +85,39 @@ public class RequestsCtrl {
 		requests.setRequestId(id);
 		requests.setStatusId(3);
 		System.out.println(requests);
-		requests = requestsService.updateRequestStatusOpen(requests);
+		requests = requestsService.updateRequestStatus(requests);
+		return new ResponseEntity<>(requests, HttpStatus.OK);
+	}
+	
+	/**
+	 * 	This method updates the status of a request
+	 * @param takes in a json object as a request
+	 * @param the path variable is used to find the id of the 
+	 * @return a request object is returned and http status of 200
+	 */
+	@PutMapping("/requests/accepted/{id}")
+	public ResponseEntity<Requests> updateStatusAccepted(@RequestBody Requests requests, @PathVariable int id) {
+		System.out.println("RequestsCtrl - update status to pending");
+		requests.setRequestId(id);
+		requests.setStatusId(1);
+		System.out.println(requests);
+		requests = requestsService.updateRequestStatus(requests);
+		return new ResponseEntity<>(requests, HttpStatus.OK);
+	}
+	
+	/**
+	 * 	This method updates the status of a request
+	 * @param takes in a json object as a request
+	 * @param the path variable is used to find the id of the 
+	 * @return a request object is returned and http status of 200
+	 */
+	@PutMapping("/requests/closed/{id}")
+	public ResponseEntity<Requests> updateStatusClosed(@RequestBody Requests requests, @PathVariable int id) {
+		System.out.println("RequestsCtrl - update status to pending");
+		requests.setRequestId(id);
+		requests.setStatusId(4);
+		System.out.println(requests);
+		requests = requestsService.updateRequestStatus(requests);
 		return new ResponseEntity<>(requests, HttpStatus.OK);
 	}
 }
