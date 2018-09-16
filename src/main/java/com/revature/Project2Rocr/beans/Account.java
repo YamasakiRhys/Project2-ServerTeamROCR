@@ -67,7 +67,7 @@ public class Account {
 	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
-	@JoinColumn(name="ROLE_ID", insertable=false, updatable=false)
+	@JoinColumn(name="ACCOUNT_STATUS_ID", insertable=false, updatable=false)
 	private AccountStatus accountStatus;
 	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
