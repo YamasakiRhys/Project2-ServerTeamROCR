@@ -87,9 +87,25 @@ public class Trade {
 	public Requests getGivenOffer() {
 		return givenOffer;
 	}
-
+	
 	public void setGivenOffer(Requests givenOffer) {
 		this.givenOffer = givenOffer;
+	}
+	
+	public int getStatusId() {
+		return statusId;
+	}
+
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override

@@ -50,14 +50,6 @@ public class AccountStatus implements Serializable{
 		this.status = status;
 	}
 
-	public Set<Account> getAcc() {
-		return acc;
-	}
-
-	public void setAcc(Set<Account> acc) {
-		this.acc = acc;
-	}
-
 	@Override
 	public String toString() {
 		return "AccountStatus [accountStatusId=" + accountStatusId + ", status=" + status + "]";

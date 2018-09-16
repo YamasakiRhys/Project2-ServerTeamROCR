@@ -43,6 +43,7 @@ public class TradeCtrl {
 	@PostMapping("/trade")
 	public ResponseEntity<Trade> createTrade(@RequestBody Trade trad) {
 		System.out.println("TradeCtrl - createTrade");
+		trad.setStatusId(1);
 		trad = tradeService.createTrade(trad);
 		return new ResponseEntity<Trade>(trad, HttpStatus.CREATED);
 		}
