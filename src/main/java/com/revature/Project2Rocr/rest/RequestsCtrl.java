@@ -1,6 +1,7 @@
 package com.revature.Project2Rocr.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,12 +67,20 @@ public class RequestsCtrl {
 	public ResponseEntity<Requests> updateStatusPending(@RequestBody Requests requests, @PathVariable int id) {
 		System.out.println("RequestsCtrl - update status to pending");
 		requests.setRequestId(id);
+		requests.setStatusId(2);
 		System.out.println(requests);
 		requests = requestsService.updateRequestStatusPending(requests);
 		return new ResponseEntity<>(requests, HttpStatus.OK);
 	}
 	
 	
-//	@PutMapping("/requests/open/{id}")
-//	public ResponseEntity<Requests> updateStatusOpen(@RequestBody Requests requests, @Path)
+	@PutMapping("/requests/open/{id}")
+	public ResponseEntity<Requests> updateStatusOpen(@RequestBody Requests requests, @PathVariable int id) {
+		System.out.println("RequestsCtrl - update status to pending");
+		requests.setRequestId(id);
+		requests.setStatusId(3);
+		System.out.println(requests);
+		requests = requestsService.updateRequestStatusOpen(requests);
+		return new ResponseEntity<>(requests, HttpStatus.OK);
+	}
 }
