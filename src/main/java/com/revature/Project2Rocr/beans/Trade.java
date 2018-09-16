@@ -28,6 +28,9 @@ public class Trade {
 	@Column(name="GIVEN_OFFER_ID")
 	private int givenOfferId;
 	
+	@Column(name="STATUS_ID")
+	private int statusId;
+	
 	@ManyToOne(fetch=FetchType.EAGER, optional=false, cascade=CascadeType.ALL)
 	@JoinColumn(name="REQUESTED_OFFER_ID", updatable=false, insertable=false)
 	private Requests requestOffer;
@@ -36,6 +39,9 @@ public class Trade {
 	@JoinColumn(name="GIVEN_OFFER_ID", updatable=false, insertable=false)
 	private Requests givenOffer;
 	
+	@ManyToOne(fetch=FetchType.EAGER, optional=false, cascade=CascadeType.ALL)
+	@JoinColumn(name="STATUS_ID", updatable=false, insertable=false)
+	private Status status;
 	
 	public Trade() {}
 
@@ -81,9 +87,25 @@ public class Trade {
 	public Requests getGivenOffer() {
 		return givenOffer;
 	}
-
+	
 	public void setGivenOffer(Requests givenOffer) {
 		this.givenOffer = givenOffer;
+	}
+	
+	public int getStatusId() {
+		return statusId;
+	}
+
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override

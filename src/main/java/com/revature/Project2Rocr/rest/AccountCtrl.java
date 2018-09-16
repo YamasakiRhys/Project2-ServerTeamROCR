@@ -57,6 +57,7 @@ public class AccountCtrl {
 	public ResponseEntity<Account> createAccount(@RequestBody Account acc) {
 		System.out.println("AccountCtrl - createAccount");
 		// the variable acc takes the newly created user from the service
+		acc.setAccountStatusId(1);
 		acc = accountService.createAccount(acc);
 		System.out.println(acc);
 		// returns a new object of the account info that was received from db
@@ -71,7 +72,7 @@ public class AccountCtrl {
 		String username = body.get("username");
 		String password = body.get("password");
 		// checks the db for a user based on username and password
-		if (accountService.loginAttempt(username, password) == null) {
+		if (accountService.loginAttempt(username, password) == null ) {
 			return new ResponseEntity<Optional<Account>> (HttpStatus.NOT_FOUND);
 		} else {
 		return new ResponseEntity<Optional<Account>>(accountService.loginAttempt(username, password), HttpStatus.ACCEPTED);
