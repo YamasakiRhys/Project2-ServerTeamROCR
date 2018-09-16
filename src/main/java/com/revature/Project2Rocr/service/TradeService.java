@@ -25,7 +25,7 @@ public class TradeService {
 	 * @return List of trades
 	 */
 	public List<Trade> getAllTrade(){
-		return (List<Trade>) tradeRepo.findAll();
+		return (List<Trade>) getTradeRepo().findAll();
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class TradeService {
 	 * @return created object
 	 */
 	public Trade createTrade(Trade trad) {
-		tradeRepo.save(trad);
+		getTradeRepo().save(trad);
 		return trad;
 	}
 	
@@ -44,7 +44,7 @@ public class TradeService {
 	 * @return return the saved object from db
 	 */
 	public Trade statusClosed(Trade trad) {
-		tradeRepo.save(trad);
+		getTradeRepo().save(trad);
 		return trad;
 	}
 	
@@ -54,7 +54,15 @@ public class TradeService {
 	 * @return return the saved object from the db
 	 */
 	public Trade statusAccepted(Trade trad) {
-		tradeRepo.save(trad);
+		getTradeRepo().save(trad);
 		return trad;
+	}
+
+	public TradeRepo getTradeRepo() {
+		return tradeRepo;
+	}
+
+	public void setTradeRepo(TradeRepo tradeRepo) {
+		this.tradeRepo = tradeRepo;
 	}
 }

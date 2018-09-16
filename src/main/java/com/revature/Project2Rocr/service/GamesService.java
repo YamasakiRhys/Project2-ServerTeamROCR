@@ -21,7 +21,7 @@ public class GamesService {
 	
 	
 	public List<Games> getAllGames() {
-		return (List<Games>) gamesRepo.findAll();
+		return (List<Games>) getGamesRepo().findAll();
 	}
 	
 	/**
@@ -41,7 +41,15 @@ public class GamesService {
 	 */
 	
 	public Games addGame(Games game) {
-		gamesRepo.save(game);
+		getGamesRepo().save(game);
 		return game;
+	}
+
+	public GamesRepo getGamesRepo() {
+		return gamesRepo;
+	}
+
+	public void setGamesRepo(GamesRepo gamesRepo) {
+		this.gamesRepo = gamesRepo;
 	}
 }
