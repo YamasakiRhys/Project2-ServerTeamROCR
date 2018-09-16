@@ -53,6 +53,13 @@ public class AccountService {
 		accRepo.save(acc);
 		return acc;
 	}
+	
+	// service method for deactivating accounts
+	public Account deactivateAccount(Account acc) {
+		System.out.println("service - Creating Account");
+		accRepo.save(acc);
+		return acc;
+	}
 
 	// service method used to pass a username and password to find an account
 	public Optional<Account> loginAttempt(String username, String password) {

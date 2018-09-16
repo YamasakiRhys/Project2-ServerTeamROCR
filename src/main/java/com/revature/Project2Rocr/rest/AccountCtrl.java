@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -64,6 +65,17 @@ public class AccountCtrl {
 		return new ResponseEntity<Account>(acc, HttpStatus.CREATED);
 	}
 	
+	// Put method to deactivate an account
+	@PutMapping("/account/deactivate")
+	public ResponseEntity<Account> deactivateAccount(@RequestBody Account acc) {
+		System.out.println("AccountCtrl - createAccount");
+		// the variable acc takes the newly created user from the service
+		acc.setAccountStatusId(2);
+		acc = accountService.deactivateAccount(acc);
+		System.out.println(acc);
+		// returns an http status once complete
+		return new ResponseEntity<Account>(HttpStatus.OK);
+	}
 	
 	// post method for logging in a user
 	@PostMapping("/login")

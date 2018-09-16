@@ -34,8 +34,26 @@ public class TradeService {
 	 * @return created object
 	 */
 	public Trade createTrade(Trade trad) {
-		System.out.println("service - Creating Trade");
-		System.out.println(requestsRepo.findById(trad.getGivenOfferId()));
+		tradeRepo.save(trad);
+		return trad;
+	}
+	
+	/**
+	 * 
+	 * @param takes a json object
+	 * @return return the saved object from db
+	 */
+	public Trade statusClosed(Trade trad) {
+		tradeRepo.save(trad);
+		return trad;
+	}
+	
+	/**
+	 * 
+	 * @param trad
+	 * @return return the saved object from the db
+	 */
+	public Trade statusAccepted(Trade trad) {
 		tradeRepo.save(trad);
 		return trad;
 	}
