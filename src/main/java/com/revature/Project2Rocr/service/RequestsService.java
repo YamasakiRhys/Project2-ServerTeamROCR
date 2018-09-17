@@ -20,7 +20,7 @@ public class RequestsService {
 	 * @return a list of requests
 	 */
 	public List<Requests> getAllRequests(){
-		return (List<Requests>) requestsRepo.findAll();
+		return (List<Requests>) getRequestsRepo().findAll();
 	}
 	
 	/**
@@ -35,7 +35,7 @@ public class RequestsService {
 			return null;
 		} else {
 		req.setStatusId(3);
-		requestsRepo.save(req);
+		getRequestsRepo().save(req);
 		return req;
 		}
 	}
@@ -46,7 +46,7 @@ public class RequestsService {
 	 * @return the req object or null if not found
 	 */
 	public Optional<Requests> findRequestById(int id) {
-		Optional<Requests> req = requestsRepo.findById(id);
+		Optional<Requests> req = getRequestsRepo().findById(id);
 		return req;
 	}
 	
@@ -56,8 +56,16 @@ public class RequestsService {
 	 * @return returns the result of the saved object
 	 */
 	public Requests updateRequestStatus(Requests requests) {
-		requestsRepo.save(requests);
+		getRequestsRepo().save(requests);
 		return requests;
+	}
+
+	public RequestsRepo getRequestsRepo() {
+		return requestsRepo;
+	}
+
+	public void setRequestsRepo(RequestsRepo requestsRepo) {
+		this.requestsRepo = requestsRepo;
 	}
 	
 }
