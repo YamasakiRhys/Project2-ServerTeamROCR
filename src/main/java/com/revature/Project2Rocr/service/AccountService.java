@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.Project2Rocr.beans.Account;
+import com.revature.Project2Rocr.beans.City;
+import com.revature.Project2Rocr.beans.Country;
+import com.revature.Project2Rocr.beans.State;
 import com.revature.Project2Rocr.repository.AccountRepo;
 import com.revature.Project2Rocr.repository.CityRepo;
 import com.revature.Project2Rocr.repository.CountryRepo;
@@ -50,10 +53,42 @@ public class AccountService {
 		accRepo.save(acc);
 		return acc;
 	}
+	
+	// service method for deactivating accounts
+	public Account deactivateAccount(Account acc) {
+		System.out.println("service - Creating Account");
+		accRepo.save(acc);
+		return acc;
+	}
 
 	// service method used to pass a username and password to find an account
 	public Optional<Account> loginAttempt(String username, String password) {
 		System.out.println("Account Service login attempt -POST");
 		return accRepo.findByUsernameAndPassword(username, password);
+	}
+	
+	
+	/**
+	 * This method gets all cities
+	 * @return returns a list of cities from the db
+	 */
+	public List<City> getCities() {
+		return (List<City>) cityRepo.findAll();
+	}
+	
+	/**
+	 * This method gets all states
+	 * @return list of states from the db
+	 */
+	public List<State> getStates() {
+		return (List<State>) stateRepo.findAll();
+	}
+	
+	/**
+	 * This method gets all countries
+	 * @return list of countries from db
+	 */
+	public List<Country> getAllCountries() {
+		return (List<Country>) countryRepo.findAll();
 	}
 }

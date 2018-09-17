@@ -1,6 +1,7 @@
 package com.revature.Project2Rocr.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,26 @@ public class RequestsService {
 		requestsRepo.save(req);
 		return req;
 		}
+	}
+	
+	/**
+	 * This method that finds requests by id
+	 * @param gets an id from the get request that passed it
+	 * @return the req object or null if not found
+	 */
+	public Optional<Requests> findRequestById(int id) {
+		Optional<Requests> req = requestsRepo.findById(id);
+		return req;
+	}
+	
+	/**
+	 * This method changes the status of a request to pending
+	 * @param receives a request object from the controller
+	 * @return returns the result of the saved object
+	 */
+	public Requests updateRequestStatus(Requests requests) {
+		requestsRepo.save(requests);
+		return requests;
 	}
 	
 }

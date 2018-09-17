@@ -62,6 +62,14 @@ public class Account {
 	@Column(name="COUNTRY_ID")
 	private int countryId;
 	
+	@Column(name="ACCOUNT_STATUS_ID")
+	private int accountStatusId;
+	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name="ACCOUNT_STATUS_ID", insertable=false, updatable=false)
+	private AccountStatus accountStatus;
+	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch=FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name="ROLE_ID", insertable=false, updatable=false)
@@ -88,8 +96,8 @@ public class Account {
 	public Account() {}
 
 	public Account(int userId, String email, String fname, String lname, String username, String password,
-			double phoneNumber, String streetAddress, int roleId, int cityId, int stateId, int countryId, Role role, City city,
-			State state, Country country) {
+			double phoneNumber, String streetAddress, int roleId, int cityId, int stateId, int countryId,
+			int accountStatusId, AccountStatus accountStatus, Role role, City city, State state, Country country) {
 		super();
 		this.userId = userId;
 		this.email = email;
@@ -103,6 +111,12 @@ public class Account {
 		this.cityId = cityId;
 		this.stateId = stateId;
 		this.countryId = countryId;
+		this.accountStatusId = accountStatusId;
+		this.accountStatus = accountStatus;
+		this.role = role;
+		this.city = city;
+		this.state = state;
+		this.country = country;
 	}
 
 	public double getPhoneNumber() {
@@ -180,6 +194,22 @@ public class Account {
 
 	public void setStreet(String streetAddress) {
 		this.streetAddress = streetAddress;
+	}
+
+	public int getAccountStatusId() {
+		return accountStatusId;
+	}
+
+	public void setAccountStatusId(int accountStatusId) {
+		this.accountStatusId = accountStatusId;
+	}
+
+	public AccountStatus getAccountStatus() {
+		return accountStatus;
+	}
+
+	public void setAccountStatus(AccountStatus accountStatus) {
+		this.accountStatus = accountStatus;
 	}
 
 	public int getRoleId() {

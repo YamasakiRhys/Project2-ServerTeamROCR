@@ -19,9 +19,26 @@ public class GamesService {
 	@Autowired
 	private GenreRepo genreRepo;
 	
+	
+	public List<Games> getAllGames() {
+		return (List<Games>) gamesRepo.findAll();
+	}
+	
+	/**
+	 * Gets a list of all available game genres in the db
+	 * @return a list of game genres
+	 */
+	
 	public List<Genre> getAllGenres() {
 		return (List<Genre>) genreRepo.findAll();
 	}
+	
+	/**
+	 * 	This method saves a game to the database
+	 * 
+	 * @param game - takes in a game object
+	 * @return 
+	 */
 	
 	public Games addGame(Games game) {
 		gamesRepo.save(game);
